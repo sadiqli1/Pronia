@@ -1,0 +1,879 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@model Plant
+
+<!-- Begin Main Content Area  -->
+      <main class="main-content">
+        <div
+          class="breadcrumb-area breadcrumb-height"
+          data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg"
+        >
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-lg-12">
+                <div class="breadcrumb-item">
+                  <h2 class="breadcrumb-heading">Single Product</h2>
+                  <ul>
+                    <li>
+                      <a href="index.html">Home</a>
+                    </li>
+                    <li>Single Product variable</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="single-product-area section-space-top-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="single-product-img">
+                  <div class="swiper-container single-product-slider">
+                    <div class="swiper-wrapper">
+                        @foreach (PlantImage plantImage in Model.PlantImages)
+                       {
+                           @if(plantImage.isMain == true){
+                               <div class="swiper-slide">
+                        <a
+                          href="~/assets/images/website-images/1-1-570x633.jpg"
+                          class="single-img gallery-popup"
+                        >
+                        <img
+                            class="img-full"
+                            src="~/assets/images/website-images/@plantImage.Name"
+                            alt="Product Image"
+                          />                          
+                        </a>
+                      </div>
+                           }else if(plantImage.isMain == null){
+                                <div class="swiper-slide">
+                        <a
+                          href="~/assets/images/website-images/1-2-570x633.jpg"
+                          class="single-img gallery-popup"
+                        >
+                          <img
+                            class="img-full"
+                            src="~/assets/images/website-images/@plantImage.Name"
+                            alt="Product Image"
+                          />
+                        </a>
+                      </div>
+                           }
+                       }
+                      
+                     
+                    </div>
+                  </div>
+                  <div class="thumbs-arrow-holder">
+                    <div class="swiper-container single-product-thumbs">
+                      <div class="swiper-wrapper">
+                       
+                        @foreach (PlantImage plantImage1 in Model.PlantImages)
+                       {
+                           @if (plantImage1.isMain == false)
+                          {
+                            <a href="#" class="swiper-slide">
+                          <img
+                            class="img-full"
+                            src="~/assets/images/website-images/@plantImage1.Name"
+                            alt="Product Thumnail"
+                          />
+                        </a>  
+                          }
+                            
+                       }
+                      </div>
+                      <!-- Add Arrows -->
+                      <div class="thumbs-button-wrap d-none d-md-block">
+                        <div class="thumbs-button-prev">
+                          <i class="pe-7s-angle-left"></i>
+                        </div>
+                        <div class="thumbs-button-next">
+                          <i class="pe-7s-angle-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 pt-5 pt-lg-0">
+                <div class="single-product-content">
+                  <h2 class="title">@Model.Name</h2>
+                  <div class="price-box">
+                    <span class="new-price">$@Model.Price</span>
+                  </div>
+                  <div class="rating-box-wrap">
+                    <div class="rating-box">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                    </div>
+                    <div class="review-status">
+                      <a href="#">( 1 Review )</a>
+                    </div>
+                  </div>
+                  <div class="selector-wrap color-option">
+                    <span class="selector-title border-bottom-0">Color</span>
+                    <select class="nice-select wide border-bottom-0 rounded-0">
+                      <option value="default">@Model.Color</option>
+                      <option value="blue">Blue</option>
+                      <option value="green">Green</option>
+                      <option value="red">Red</option>
+                    </select>
+                  </div>
+                  <div class="selector-wrap size-option">
+                    <span class="selector-title">Size</span>
+                    <select class="nice-select wide rounded-0">
+                      <option value="medium">@Model.Size</option>
+                      <option value="large">Large Size With Poot</option>
+                      <option value="small">Small Size With Poot</option>
+                    </select>
+                  </div>
+                  <p class="short-desc">
+                    @Model.Desc
+                  </p>
+                  <ul class="quantity-with-btn">
+                    <li class="quantity">
+                      <div class="cart-plus-minus">
+                        <input
+                          class="cart-plus-minus-box"
+                          value="1"
+                          type="text"
+                        />
+                      </div>
+                    </li>
+                    <li class="add-to-cart">
+                      <a
+                        class="btn btn-custom-size lg-size btn-pronia-primary"
+                        href="cart.html"
+                        >Add to cart</a
+                      >
+                    </li>
+                    <li class="wishlist-btn-wrap">
+                      <a class="custom-circle-btn" href="wishlist.html">
+                        <i class="pe-7s-like"></i>
+                      </a>
+                    </li>
+                    <li class="compare-btn-wrap">
+                      <a class="custom-circle-btn" href="compare.html">
+                        <i class="pe-7s-refresh-2"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="service-item-wrap">
+                    <li class="service-item">
+                      <div class="service-img">
+                        <img
+                          src="~/assets/images/website-images/car.png"
+                          alt="Shipping Icon"
+                        />
+                      </div>
+                      <div class="service-content">
+                        <span class="title"
+                          >Free <br />
+                          Shipping</span
+                        >
+                      </div>
+                    </li>
+                    <li class="service-item">
+                      <div class="service-img">
+                        <img
+                          src="~/assets/images/website-images/card.png"
+                          alt="Shipping Icon"
+                        />
+                      </div>
+                      <div class="service-content">
+                        <span class="title"
+                          >Safe <br />
+                          Payment</span
+                        >
+                      </div>
+                    </li>
+                    <li class="service-item">
+                      <div class="service-img">
+                        <img
+                          src="~/assets/images/website-images/service.png"
+                          alt="Shipping Icon"
+                        />
+                      </div>
+                      <div class="service-content">
+                        <span class="title"
+                          >Safe <br />
+                          Payment</span
+                        >
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="product-category">
+                    <span class="title">SKU:</span>
+                    <ul>
+                      <li>
+                        <a href="#">@Model.SKU</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="product-category">
+                    <span class="title">Categories :</span>
+                    <ul>
+                      
+                      @foreach (PlantCategory category in Model.PlantCategories)
+                     {
+                         <li>
+                        <a href="#">@category.Category.Name </a>
+                      </li>
+                     }
+                    </ul>
+                  </div>
+                  <div class="product-category product-tags">
+                    <span class="title">Tags :</span>
+                    <ul>
+                        @foreach (var item in Model.PlantTags)
+                       {
+                            <li>
+                        <a href="#">@item.Tag.Name</a>
+                      </li>   
+                       }
+                    </ul>
+                  </div>
+                  <div
+                    class="product-category social-link align-items-center pb-0"
+                  >
+                    <span class="title pe-3">Share:</span>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          data-tippy="Pinterest"
+                          data-tippy-inertia="true"
+                          data-tippy-animation="shift-away"
+                          data-tippy-delay="50"
+                          data-tippy-arrow="true"
+                          data-tippy-theme="sharpborder"
+                        >
+                          <i class="fa fa-pinterest-p"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-tippy="Twitter"
+                          data-tippy-inertia="true"
+                          data-tippy-animation="shift-away"
+                          data-tippy-delay="50"
+                          data-tippy-arrow="true"
+                          data-tippy-theme="sharpborder"
+                        >
+                          <i class="fa fa-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-tippy="Tumblr"
+                          data-tippy-inertia="true"
+                          data-tippy-animation="shift-away"
+                          data-tippy-delay="50"
+                          data-tippy-arrow="true"
+                          data-tippy-theme="sharpborder"
+                        >
+                          <i class="fa fa-tumblr"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          data-tippy="Dribbble"
+                          data-tippy-inertia="true"
+                          data-tippy-animation="shift-away"
+                          data-tippy-delay="50"
+                          data-tippy-arrow="true"
+                          data-tippy-theme="sharpborder"
+                        >
+                          <i class="fa fa-dribbble"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-tab-area section-space-top-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="tab-btn"
+                      id="information-tab"
+                      data-bs-toggle="tab"
+                      href="#information"
+                      role="tab"
+                      aria-controls="information"
+                      aria-selected="false"
+                    >
+                      Information
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="active tab-btn"
+                      id="description-tab"
+                      data-bs-toggle="tab"
+                      href="#description"
+                      role="tab"
+                      aria-controls="description"
+                      aria-selected="true"
+                    >
+                      Description
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="tab-btn"
+                      id="reviews-tab"
+                      data-bs-toggle="tab"
+                      href="#reviews"
+                      role="tab"
+                      aria-controls="reviews"
+                      aria-selected="false"
+                    >
+                      Reviews(3)
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content product-tab-content">
+                  <div
+                    class="tab-pane fade"
+                    id="information"
+                    role="tabpanel"
+                    aria-labelledby="information-tab"
+                  >
+                    <div class="product-information-body">
+                      <h4 class="title">Shipping</h4>
+                      <p class="short-desc mb-4">
+                        @Model.PlantInformation.Shipping
+                      </p>
+                      <h4 class="title">About return request</h4>
+                      <p class="short-desc mb-4">
+                        @Model.PlantInformation.AboutReturnRequest
+                      </p>
+                      <h4 class="title">Guarantee</h4>
+                      <p class="short-desc mb-0">
+                        @Model.PlantInformation.Guarantee
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade show active"
+                    id="description"
+                    role="tabpanel"
+                    aria-labelledby="description-tab"
+                  >
+                    <div class="product-description-body">
+                      <p class="short-desc mb-0">
+                        @Model.Desc
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="reviews"
+                    role="tabpanel"
+                    aria-labelledby="reviews-tab"
+                  >
+                    <div class="product-review-body">
+                      <div class="blog-comment mt-0">
+                        <h4 class="heading">Comments (03)</h4>
+                        <div class="blog-comment-item">
+                          <div class="blog-comment-img">
+                            <img
+                              src="~/assets/images/website-images/blog/avatar/1-1-120x120.png"
+                              alt="User Image"
+                            />
+                          </div>
+                          <div class="blog-comment-content">
+                            <div class="user-meta">
+                              <h2 class="user-name">Donald Chavez</h2>
+                              <span class="date">21 July 2021</span>
+                            </div>
+                            <p class="user-comment">
+                              Lorem ipsum dolor sit amet, consectetur adipisi
+                              elit, sed do eiusmod tempor incidid ut labore etl
+                              dolore magna aliqua. Ut enim ad minim veniam, quis
+                              nostrud exercitati ullamco laboris nisi ut
+                              aliquiex ea commodo consequat.
+                            </p>
+                            <a class="btn btn-custom-size comment-btn" href="#"
+                              >Reply</a
+                            >
+                          </div>
+                        </div>
+                        <div class="blog-comment-item relpy-item">
+                          <div class="blog-comment-img">
+                            <img
+                              src="~/assets/images/website-images/blog/avatar/1-2-120x120.png"
+                              alt="User Image"
+                            />
+                          </div>
+                          <div class="blog-comment-content">
+                            <div class="user-meta">
+                              <h2 class="user-name">Marissa Swan</h2>
+                              <span class="date">21 July 2021</span>
+                            </div>
+                            <p class="user-comment">
+                              Lorem ipsum dolor sit amet, consectetur adipisi
+                              elit, sed do eiusmod tempr incidid ut labore etl
+                              dolore magna aliqua. Ut enim ad minim veniam,
+                              quisnos exercitati ullamco laboris nisi ut
+                              aliquiex.
+                            </p>
+                            <a
+                              class="btn btn-custom-size comment-btn style-2"
+                              href="#"
+                              >Reply</a
+                            >
+                          </div>
+                        </div>
+                        <div class="blog-comment-item">
+                          <div class="blog-comment-img">
+                            <img
+                              src="~/assets/images/website-images/blog/avatar/1-3-120x120.png"
+                              alt="User Image"
+                            />
+                          </div>
+                          <div class="blog-comment-content">
+                            <div class="user-meta">
+                              <h2 class="user-name">Donald Chavez</h2>
+                              <span class="date">21 July 2021</span>
+                            </div>
+                            <p class="user-comment">
+                              Lorem ipsum dolor sit amet, consectetur adipisi
+                              elit, sed do eiusmod tempor incidid ut labore etl
+                              dolore magna aliqua. Ut enim ad minim veniam, quis
+                              nostrud exercitati ullamco laboris nisi ut
+                              aliquiex ea commodo consequat.
+                            </p>
+                            <a class="btn btn-custom-size comment-btn" href="#"
+                              >Reply</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="feedback-area">
+                        <h2 class="heading">Leave a comment</h2>
+                        <form class="feedback-form" action="#">
+                          <div class="group-input">
+                            <div class="form-field me-md-30 mb-30 mb-md-0">
+                              <input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name*"
+                                class="input-field"
+                              />
+                            </div>
+                            <div class="form-field">
+                              <input
+                                type="text"
+                                name="email"
+                                placeholder="Your Email*"
+                                class="input-field"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-field mt-30">
+                            <input
+                              type="text"
+                              name="subject"
+                              placeholder="Subject (Optinal)"
+                              class="input-field"
+                            />
+                          </div>
+                          <div class="form-field mt-30">
+                            <textarea
+                              name="message"
+                              placeholder="Message"
+                              class="textarea-field"
+                            ></textarea>
+                          </div>
+                          <div class="button-wrap pt-5">
+                            <button
+                              type="submit"
+                              value="submit"
+                              class="btn btn-custom-size xl-size btn-pronia-primary"
+                              name="submit"
+                            >
+                              Post Comment
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Begin Product Area -->
+        <div class="product-area section-space-y-axis-90">
+          <div class="container">
+            <div class="row">
+              <div class="section-title-wrap without-tab">
+                <h2 class="section-title">Related Products</h2>
+                <p class="section-desc">
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                </p>
+              </div>
+              <div class="col-lg-12">
+                <div class="swiper-container product-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide product-item">
+                      <div class="product-img">
+                        <a href="single-product-variable.html">
+                          <img
+                            class="primary-img"
+                            src="~/assets/images/website-images/1-9-270x300.jpg"
+                            alt="Product Images"
+                          />
+                          <img
+                            class="secondary-img"
+                            src="~/assets/images/website-images/1-10-270x300.jpg"
+                            alt="Product Images"
+                          />
+                        </a>
+                        <div class="product-add-action">
+                          <ul>
+                            <li>
+                              <a
+                                href="wishlist.html"
+                                data-tippy="Add to wishlist"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-like"></i>
+                              </a>
+                            </li>
+                            <li
+                              class="quuickview-btn"
+                              data-bs-toggle="modal"
+                              data-bs-target="#quickModal"
+                            >
+                              <a
+                                href="#"
+                                data-tippy="Quickview"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-look"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="cart.html"
+                                data-tippy="Add to cart"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-cart"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <a
+                          class="product-name"
+                          href="single-product-variable.html"
+                          >American Marigold</a
+                        >
+                        <div class="price-box pb-1">
+                          <span class="new-price">$23.45</span>
+                        </div>
+                        <div class="rating-box">
+                          <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide product-item">
+                      <div class="product-img">
+                        <a href="single-product-variable.html">
+                          <img
+                            class="primary-img"
+                            src="~/assets/images/website-images/1-10-270x300.jpg"
+                            alt="Product Images"
+                          />
+                          <img
+                            class="secondary-img"
+                            src="~/assets/images/website-images/1-11-270x300.jpg"
+                            alt="Product Images"
+                          />
+                        </a>
+                        <div class="product-add-action">
+                          <ul>
+                            <li>
+                              <a
+                                href="wishlist.html"
+                                data-tippy="Add to wishlist"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-like"></i>
+                              </a>
+                            </li>
+                            <li
+                              class="quuickview-btn"
+                              data-bs-toggle="modal"
+                              data-bs-target="#quickModal"
+                            >
+                              <a
+                                href="#"
+                                data-tippy="Quickview"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-look"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="cart.html"
+                                data-tippy="Add to cart"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-cart"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <a
+                          class="product-name"
+                          href="single-product-variable.html"
+                          >Black Eyed Susan</a
+                        >
+                        <div class="price-box pb-1">
+                          <span class="new-price">$25.45</span>
+                        </div>
+                        <div class="rating-box">
+                          <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide product-item">
+                      <div class="product-img">
+                        <a href="single-product-variable.html">
+                          <img
+                            class="primary-img"
+                            src="~/assets/images/website-images/1-11-270x300.jpg"
+                            alt="Product Images"
+                          />
+                          <img
+                            class="secondary-img"
+                            src="~/assets/images/website-images/1-4-270x300.jpg"
+                            alt="Product Images"
+                          />
+                        </a>
+                        <div class="product-add-action">
+                          <ul>
+                            <li>
+                              <a
+                                href="wishlist.html"
+                                data-tippy="Add to wishlist"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-like"></i>
+                              </a>
+                            </li>
+                            <li
+                              class="quuickview-btn"
+                              data-bs-toggle="modal"
+                              data-bs-target="#quickModal"
+                            >
+                              <a
+                                href="#"
+                                data-tippy="Quickview"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-look"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="cart.html"
+                                data-tippy="Add to cart"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-cart"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <a
+                          class="product-name"
+                          href="single-product-variable.html"
+                          >Bleeding Heart</a
+                        >
+                        <div class="price-box pb-1">
+                          <span class="new-price">$30.45</span>
+                        </div>
+                        <div class="rating-box">
+                          <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide product-item">
+                      <div class="product-img">
+                        <a href="single-product-variable.html">
+                          <img
+                            class="primary-img"
+                            src="~/assets/images/website-images/1-7-270x300.jpg"
+                            alt="Product Images"
+                          />
+                          <img
+                            class="secondary-img"
+                            src="~/assets/images/website-images/1-8-270x300.jpg"
+                            alt="Product Images"
+                          />
+                        </a>
+                        <div class="product-add-action">
+                          <ul>
+                            <li>
+                              <a
+                                href="wishlist.html"
+                                data-tippy="Add to wishlist"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-like"></i>
+                              </a>
+                            </li>
+                            <li
+                              class="quuickview-btn"
+                              data-bs-toggle="modal"
+                              data-bs-target="#quickModal"
+                            >
+                              <a
+                                href="#"
+                                data-tippy="Quickview"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-look"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="cart.html"
+                                data-tippy="Add to cart"
+                                data-tippy-inertia="true"
+                                data-tippy-animation="shift-away"
+                                data-tippy-delay="50"
+                                data-tippy-arrow="true"
+                                data-tippy-theme="sharpborder"
+                              >
+                                <i class="pe-7s-cart"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <a
+                          class="product-name"
+                          href="single-product-variable.html"
+                          >Bloody Cranesbill</a
+                        >
+                        <div class="price-box pb-1">
+                          <span class="new-price">$45.00</span>
+                        </div>
+                        <div class="rating-box">
+                          <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product Area End Here -->
+      </main>
+      <!-- Main Content Area End Here  -->
