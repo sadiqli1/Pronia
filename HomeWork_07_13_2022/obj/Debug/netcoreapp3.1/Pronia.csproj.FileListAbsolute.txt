@@ -144,3 +144,5 @@ C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Pronia.genruntimeconfig.cache
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Pronia.csproj.AssemblyReference.cache
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Views\Plant\Detail.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_getdetail.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PlantsPartialView.cshtml.g.cs

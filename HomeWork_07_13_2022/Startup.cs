@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pronia.Service;
 
 namespace HomeWork_07_13_2022
 {
@@ -30,6 +31,9 @@ namespace HomeWork_07_13_2022
             {
                 opt.UseSqlServer(_configuration.GetConnectionString("Default"));
             });
+            services.AddScoped<LayoutService>();
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

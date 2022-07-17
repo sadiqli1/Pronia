@@ -19,6 +19,7 @@ namespace HomeWork_07_13_2022.DAL
         public DbSet<PlantInformation> PlantInformations { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PlantTag> PlantTags { get; set; }
+        public DbSet<Settings> Settings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var item in modelBuilder.Model.GetEntityTypes()
@@ -30,6 +31,9 @@ namespace HomeWork_07_13_2022.DAL
                 //item.SetDefaultValue(20.5m);
             }
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Settings>()
+                .HasIndex(p => p.Key)
+                .IsUnique();
         }
     }
 }
