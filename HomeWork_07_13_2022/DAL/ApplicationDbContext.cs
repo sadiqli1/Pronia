@@ -20,6 +20,8 @@ namespace HomeWork_07_13_2022.DAL
         public DbSet<Tag> Tags { get; set; }
         public DbSet<PlantTag> PlantTags { get; set; }
         public DbSet<Settings> Settings { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var item in modelBuilder.Model.GetEntityTypes()
@@ -33,6 +35,9 @@ namespace HomeWork_07_13_2022.DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Settings>()
                 .HasIndex(p => p.Key)
+                .IsUnique();
+            modelBuilder.Entity<Category>()
+                .HasIndex(c => c.Name)
                 .IsUnique();
         }
     }

@@ -14,4 +14,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\ProniaAdmin\Data\" />
+    <Folder Include="Areas\ProniaAdmin\Models\" />
+  </ItemGroup>
+
 </Project>

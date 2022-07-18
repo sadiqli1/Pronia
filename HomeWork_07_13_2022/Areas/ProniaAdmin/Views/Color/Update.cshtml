@@ -1,0 +1,18 @@
+﻿@model Color
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class = "main-panel">
+    <h1>Update Color</h1>
+    <form class = "mt-3" method = "post">
+        <div>
+            <label asp-for = "Name">Color name:</label><br />
+            <input asp-for = "Name" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "Name"></span>
+        </div>
+        <div class = "mt-2">
+            <button class = "btn btn-success" type = "submit" style = "color : white">Update</button>
+        </div>
+    </form>
+</div>

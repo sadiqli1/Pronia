@@ -46,9 +46,12 @@ namespace HomeWork_07_13_2022
 
             app.UseRouting();
             app.UseStaticFiles();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=dashboard}/{action=Index}/{id?}"
+                );
                 endpoints.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
             });
         }
