@@ -162,3 +162,6 @@ C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Size\Index.cshtml.g.cs
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Size\Create.cshtml.g.cs
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Size\Update.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Slider\Update.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Index.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Create.cshtml.g.cs

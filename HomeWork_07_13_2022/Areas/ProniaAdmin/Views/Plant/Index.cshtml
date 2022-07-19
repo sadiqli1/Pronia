@@ -1,7 +1,8 @@
-﻿@model List<Slider>
+﻿@model List<Plant>
 @{
     ViewData["Title"] = "Index";
 }
+
 
 <div class = "main-panel">
 	<div class = "content-wrapper">
@@ -10,7 +11,7 @@
 				<div class = "card">
 					<div class = "card-body">
                         <div>
-                            <a asp-area = "ProniaAdmin" asp-controller = "slider" asp-action = "create" class = "btn btn-success" style = "color:white">Create new Slider</a>
+                            <a asp-area = "ProniaAdmin" asp-controller = "plant" asp-action = "create" class = "btn btn-success" style = "color:white">Create new Plant</a>
                         </div>
 						<div class="table-responsive pt-3">
                     <table class="table table-dark">
@@ -20,16 +21,13 @@
                             Images
                           </th>
                           <th>
-                            Title
+                            Name
                           </th>
                           <th>
-                            Article
+                            Price
                           </th>
                           <th>
-                            Discount
-                          </th>
-                          <th>
-                            Order
+                            SKU
                           </th>
                           <th>
                             Settings
@@ -37,30 +35,27 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach (Slider slider in Model)
+                        @foreach (Plant plant in Model)
                        {
                            <tr>
                           <td>
-                            <img src = "~/assets/images/website-images//@slider.Image">
+                            <img src = "~/assets/images/website-images//@plant.PlantImages.FirstOrDefault(p => p.isMain == true)?.Name">
                           </td>
                           <td>
-                            @slider.Title
+                            @plant.Name
                           </td>
                           <td>
-                            @slider.Desc
+                            $@plant.Price
                           </td>
                           <td>
-                            @slider.Discount
-                          </td>
-                          <td>
-                            @slider.Order
+                            @plant.SKU
                           </td>
                           <td class = "d-flex">
                             <div>
-                                <a class = "btn btn-warning" asp-area = "proniaadmin" asp-controller = "slider" asp-action = "update" asp-route-id = "@slider.Id"><i class = "mdi mdi-border-color"></i></a>
+                                <a class = "btn btn-warning" asp-area = "proniaadmin" asp-controller = "plant" asp-action = "update" asp-route-id = "@plant.Id"><i class = "mdi mdi-border-color"></i></a>
                             </div>
                             <div>
-                                <a class = "btn btn-danger" asp-area = "proniaadmin" asp-controller = "slider" asp-action = "delete" asp-route-id = "@slider.Id"><i class = "mdi mdi-delete"></i></a>
+                                <a class = "btn btn-danger" asp-area = "proniaadmin" asp-controller = "plant" asp-action = "delete" asp-route-id = "@plant.Id"><i class = "mdi mdi-delete"></i></a>
                             </div>
                           </td>
                         </tr>

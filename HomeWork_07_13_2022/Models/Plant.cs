@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using HomeWork_07_13_2022.Models.Base;
+using Microsoft.AspNetCore.Http;
 
 namespace Pronia.Models
 {
@@ -16,6 +18,14 @@ namespace Pronia.Models
         public List<PlantImage> PlantImages{ get; set; }
         public List<PlantCategory> PlantCategories { get; set; }
         public List<PlantTag> PlantTags { get; set; }
+        [NotMapped]
+        public List<int> CategoryIds { get; set; }
+        [NotMapped]
+        public IFormFile MainPhoto { get; set; }
+        [NotMapped]
+        public IFormFile HoverPhoto { get; set; }
+        [NotMapped]
+        public List<IFormFile> Photos { get; set; }
 
     }
 }

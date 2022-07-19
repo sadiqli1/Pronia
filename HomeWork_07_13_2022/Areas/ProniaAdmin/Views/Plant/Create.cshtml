@@ -1,0 +1,57 @@
+﻿@model Plant
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class = "main-panel">
+    <h1>Create Slider</h1>
+    <div class = "alter alter-danger" asp-validation-summary = "ModelOnly"></div>
+    <form class = "mt-3" method = "post" enctype = "multipart/form-data">
+        <div>
+            <label asp-for = "MainPhoto">Main Image:</label><br />
+            <input asp-for = "MainPhoto" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "MainPhoto"></span>
+        </div>
+        <div>
+            <label asp-for = "HoverPhoto">Hover Image:</label><br />
+            <input asp-for = "HoverPhoto" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "HoverPhoto"></span>
+        </div>
+        <div>
+            <label asp-for = "Photos">Images:</label><br />
+            <input asp-for = "Photos" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "Photos"></span>
+        </div>
+        <div>
+            <label asp-for = "Name">Name:</label><br />
+            <input asp-for = "Name" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "Name"></span>
+        </div>
+        <div>
+            <label asp-for = "Price">Price:</label><br />
+            <input asp-for = "Price" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "Price"></span>
+        </div>
+        <div>
+            <label asp-for = "SKU">SKU:</label><br />
+            <input asp-for = "SKU" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "SKU"></span>
+        </div>
+        <div>
+            <label asp-for = "Desc">Desciription:</label><br />
+            <input asp-for = "Desc" class = "form-control" />
+            <span class = "text-danger" asp-validation-for = "Desc"></span>
+        </div>
+        <div>
+            <label asp-for = "PlantInformation">Information:</label><br />
+            <select asp-for = "PlantInformationId" asp-items = "@(new SelectList(ViewBag.Information, "Id", "Shipping"))"></select>
+        </div>
+        <div>
+            <label asp-for = "PlantCategories">Categories:</label>
+            <select class = "form-control" asp-for = "CategoryIds" asp-items = "@(new SelectList(ViewBag.Categories, "Id", "Name"))"></select>
+        </div>
+        <div class = "mt-2">
+            <button class = "btn btn-success" type = "submit" style = "color : white">Create</button>
+        </div>
+    </form>
+</div>
