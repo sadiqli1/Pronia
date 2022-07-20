@@ -165,3 +165,11 @@ C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Slider\Update.cshtml.g.cs
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Index.cshtml.g.cs
 C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Create.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Update.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\isasa\Desktop\BackEnd\HomeWork_07_13_2022\HomeWork_07_13_2022\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

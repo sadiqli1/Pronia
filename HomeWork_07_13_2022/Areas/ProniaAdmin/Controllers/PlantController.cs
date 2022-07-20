@@ -60,14 +60,29 @@ namespace Pronia.Areas.ProniaAdmin.Controllers
                 ModelState.AddModelError(string.Empty, "Please choose valid Image");
                 return View();
             }
-            foreach (IFormFile photo in plant.Photos)
+            plant.PlantImages = new List<PlantImage>();
+            TempData["FileName"] = "";
+            List<IFormFile> removeable = new List<IFormFile>();
+            foreach (IFormFile photo in plant.Photos.ToList())
             {
                 if (!photo.ImageisOkay(2))
                 {
-                    plant.Photos.Remove(photo);
-                    TempData["FileName"] = photo.FileName;
+                    removeable.Add(photo);
+                    TempData["FileName"] += photo.FileName + ",";
+                    continue;
                 }
+                PlantImage another = new PlantImage()
+                {
+                    Name = await photo.FileCreate(_env.WebRootPath, "assets/images/website-images"),
+                    isMain = false,
+                    Alternative = photo.Name,
+                    Plant = plant
+                };
+                plant.PlantImages.Add(another);
             }
+
+            plant.Photos.RemoveAll(p => removeable.Any(r => r.FileName == p.FileName));
+
             PlantImage main = new PlantImage
             {
                 Name = await plant.MainPhoto.FileCreate(_env.WebRootPath, "assets/images/website-images"),
@@ -82,7 +97,70 @@ namespace Pronia.Areas.ProniaAdmin.Controllers
                 Alternative = plant.Name,
                 Plant = plant
             };
+            plant.PlantImages.Add(main);
+            plant.PlantImages.Add(hover);
+
+            plant.PlantCategories = new List<PlantCategory>();
+            foreach (int id in plant.CategoryIds)
+            {
+                PlantCategory category = new PlantCategory()
+                {
+                    CategoryId = id,
+                    Plant = plant
+                };
+                plant.PlantCategories.Add(category);
+            }
+            await _context.Plants.AddAsync(plant);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<ActionResult> Update(int? id)
+        {
+            if (id is null || id == 0) return NotFound();
+            Plant model = await _context.Plants
+                .Include(p => p.PlantImages)
+                .Include(p => p.PlantCategories).ThenInclude(c => c.Category)
+                .Include(p => p.PlantInformation)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (model == null) return NotFound();
+            return View(model);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Update(int? id, Plant plant)
+        {
+            if (id is null || id == 0) return NotFound();
+            Plant model = await _context.Plants
+                .Include(p => p.PlantImages)
+                .Include(p => p.PlantCategories).ThenInclude(c => c.Category)
+                .Include(p => p.PlantInformation)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (!ModelState.IsValid) return View(model);
+
+            if (plant.Photos == null)
+            {
+
+            }
+            return Json(plant.Photos == null);
+            return View(plant);
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id is null || id == 0) return NotFound();
+            Plant existed = _context.Plants.Include(p => p.PlantImages).Include(p => p.PlantCategories).ThenInclude(p => p.Category).FirstOrDefault(p => p.Id == id);
+            if(existed == null) return NotFound();
+            existed.PlantImages = new List<PlantImage>();
+
+            foreach (PlantImage item in existed.PlantImages)
+            {
+                FileValidator.FileDelete(_env.WebRootPath, "assets/images/website-images", item.Name);
+            }
+
+            _context.Plants.Remove(existed);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

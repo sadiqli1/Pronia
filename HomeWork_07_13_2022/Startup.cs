@@ -6,10 +6,12 @@ using HomeWork_07_13_2022.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pronia.Models;
 using Pronia.Service;
 
 namespace HomeWork_07_13_2022
@@ -31,6 +33,24 @@ namespace HomeWork_07_13_2022
             {
                 opt.UseSqlServer(_configuration.GetConnectionString("Default"));
             });
+
+            services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequiredUniqueChars = 3;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+
+                opt.Lockout.MaxFailedAccessAttempts = 5;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                opt.Lockout.AllowedForNewUsers = true;
+
+                opt.User.RequireUniqueEmail = false;
+                opt.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm1234567890";
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddScoped<LayoutService>();
 
             services.AddHttpContextAccessor();
@@ -46,6 +66,10 @@ namespace HomeWork_07_13_2022
 
             app.UseRouting();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

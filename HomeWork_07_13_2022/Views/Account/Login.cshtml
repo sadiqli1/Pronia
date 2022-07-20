@@ -1,0 +1,71 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+}
+
+<main class="main-content">
+        <div
+          class="breadcrumb-area breadcrumb-height"
+          data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg"
+        >
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-lg-12">
+                <div class="breadcrumb-item">
+                  <h2 class="breadcrumb-heading">Register Page</h2>
+                  <ul>
+                    <li>
+                      <a href="index.html">Home</a>
+                    </li>
+                    <li>Register</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="login-register-area section-space-y-axis-100">
+            <div class = "alert alert-danger" asp-validation-summary = "ModelOnly"></div>
+          <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                <form method = "post">
+                  <div class="login-form">
+                    <h4 class="login-title">Login</h4>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <label>Username</label>
+                        <input asp-for = "Username" placeholder="Username" /><br />
+                        <span class = "text text-danger" asp-validation-for = "Username"></span>
+                      </div>
+                      <div class="col-lg-12">
+                        <label>Password</label>
+                        <input asp-for = "Password" placeholder="Password" /><br />
+                        <span class = "text text-danger" asp-validation-for = "Password"></span>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="check-box">
+                          <input asp-for = "Rememberme" />
+                          <label asp-for = "Rememberme">Remember me</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4 pt-1 mt-md-0">
+                        <div class="forgotton-password_info">
+                          <a href="#"> Forgotten pasward?</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 pt-5">
+                        <button
+                          class="btn btn-custom-size lg-size btn-pronia-primary"
+                        >
+                          Login
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>

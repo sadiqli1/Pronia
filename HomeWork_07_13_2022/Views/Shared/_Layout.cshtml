@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="~/assets/css/nice-select.css" />
     <link rel="stylesheet" href="~/assets/css/magnific-popup.min.css" />
     <link rel="stylesheet" href="~/assets/css/ion.rangeSlider.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css" />
@@ -153,9 +154,12 @@
                             >
                           </li>
                           <li>
-                            <a class="dropdown-item" href="login-register.html"
-                              >Login | Register</a
-                            >
+                            <a class="dropdown-item" asp-controller = "account" asp-action = "register"
+                              >Register</a>
+                          </li>
+                           <li>
+                            <a class="dropdown-item" asp-controller = "account" asp-action = "login"
+                              >Login</a>
                           </li>
                         </ul>
                       </li>

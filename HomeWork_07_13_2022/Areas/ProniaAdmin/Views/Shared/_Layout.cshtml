@@ -9,6 +9,7 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="~/admin/vendors/base/vendor.bundle.base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="~/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
@@ -259,6 +260,14 @@
   <!-- End custom js for this page-->
 
   <script src="~/admin/js/jquery.cookie.js" type="text/javascript"></script>
+  <script>
+      let btns = document.querySelectorAll(".del");
+      btns.forEach(btn => {
+          btn.addEventListener("click", (e) => {
+              btn.parentElement.remove()
+          })
+      })
+  </script>
 </body>
 
 </html>
