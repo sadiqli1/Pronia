@@ -10,11 +10,13 @@ namespace Pronia.Controllers
     {
         private readonly UserManager<AppUser> _usermanager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly Microsoft.AspNetCore.Identity.RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> usermanager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> usermanager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _usermanager = usermanager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
         public IActionResult Register()
         {
@@ -49,6 +51,7 @@ namespace Pronia.Controllers
                 return View();
             }
 
+            await _usermanager.AddToRoleAsync(user, "Member");
             return RedirectToAction("Index", "Home");
         }
 
@@ -87,6 +90,12 @@ namespace Pronia.Controllers
         public IActionResult ShowAuthenticated()
         {
             return Json(User.Identity.IsAuthenticated);
+        }
+        public async Task CreateRole()
+        {
+            await _roleManager.CreateAsync(new IdentityRole("Member"));
+            await _roleManager.CreateAsync(new IdentityRole("Moderator"));
+            await _roleManager.CreateAsync(new IdentityRole("Admin"));
         }
     }
 }

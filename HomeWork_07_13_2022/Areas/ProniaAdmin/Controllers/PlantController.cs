@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using HomeWork_07_13_2022.DAL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using Pronia.Models;
 namespace Pronia.Areas.ProniaAdmin.Controllers
 {
     [Area("ProniaAdmin")]
+    [Authorize]
     public class PlantController : Controller
     {
         private readonly ApplicationDbContext _context;
